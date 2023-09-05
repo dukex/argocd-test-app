@@ -17,19 +17,3 @@ spec:
             - -c
             - date; echo Hello from the Kubernetes cluster
           restartPolicy: OnFailure
-      volumeMounts:
-      - name: config
-        mountPath: "/config"
-        readOnly: true
-  volumes:
-  # You set volumes at the Pod level, then mount them into containers inside that Pod
-  - name: config
-    configMap:
-      # Provide the name of the ConfigMap you want to mount.
-      name: game-demo
-      # An array of keys from the ConfigMap to create as files
-      items:
-      - key: "game.properties"
-        path: "game.properties"
-      - key: "user-interface.properties"
-        path: "user-interface.properties"
