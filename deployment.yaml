@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
+  annotations:
+    configmap.reloader.stakater.com/reload: "game-demo"
   labels:
     app: nginx
     app.kubernetes.io/instance: some-application
