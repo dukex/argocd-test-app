@@ -14,7 +14,7 @@ spec:
       jsonnet: {}
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: apps
+    namespace: apps-dev
   syncPolicy:
     automated:
       prune: true
@@ -40,7 +40,7 @@ spec:
       jsonnet: {}
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: apps
+    namespace: apps-stg
   syncPolicy:
     automated:
       prune: true
@@ -67,7 +67,7 @@ spec:
       jsonnet: {}
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: apps
+    namespace: apps-prd
   orphanedResources:
     warn: true
   syncPolicy:
