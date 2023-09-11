@@ -7,10 +7,8 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   description: Team One
-  # Allow manifests to deploy from any Git repos
   sourceRepos:
   - '*'
-  # Only permit applications to deploy to the guestbook namespace in the same cluster
   destinations:
   - namespace: team-one
     server: https://kubernetes.default.svc
