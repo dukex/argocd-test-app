@@ -19,6 +19,11 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  orphanedResources:
+    warn: true
+  syncPolicy:
+    syncOptions:
+    - PruneLast=true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -41,6 +46,11 @@ spec:
     automated:
       prune: true
       selfHeal: true
+  orphanedResources:
+    warn: true
+  syncPolicy:
+    syncOptions:
+    - PruneLast=true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -52,10 +62,15 @@ spec:
   source:
     repoURL: 'https://github.com/dukex/argocd-test-app.git'
     path: ./k8s
-    targetRevision: main
+    targetRevision: v1.0.0
     directory:
       recurse: true
       jsonnet: {}
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: apps
+  orphanedResources:
+    warn: true
+  syncPolicy:
+    syncOptions:
+    - PruneLast=true
