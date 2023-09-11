@@ -21,8 +21,7 @@ spec:
       selfHeal: true
     syncOptions:
     - PruneLast=true
-  orphanedResources:
-    warn: true
+
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -47,8 +46,7 @@ spec:
       selfHeal: true
     syncOptions:
     - PruneLast=true
-  orphanedResources:
-    warn: true
+
 
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -68,8 +66,7 @@ spec:
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: apps-prd
-  orphanedResources:
-    warn: true
+
   syncPolicy:
     syncOptions:
     - PruneLast=true
