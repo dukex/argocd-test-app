@@ -61,7 +61,7 @@ spec:
   source:
     repoURL: 'https://github.com/dukex/argocd-test-app.git'
     path: ./k8s
-    targetRevision: v1.1.0
+    targetRevision: v1.2.0
     directory:
       recurse: true
       jsonnet: {}
