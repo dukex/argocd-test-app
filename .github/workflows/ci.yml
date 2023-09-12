@@ -31,3 +31,5 @@ jobs:
           rm k8s/deployment.yaml
           mv k8s/deployment.yaml.new k8s/deployment.yaml
       - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Patch deploy k8s files
