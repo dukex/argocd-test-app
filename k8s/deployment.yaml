@@ -18,7 +18,7 @@ spec:
         app: nginx
     spec:
       containers:
-      - image: dukex/dummy-nginx:a5bf1dfd95255e0e191e4a7ea3f9e240c1dbeda9
+      - image: dukex/dummy-nginx:0daef29f251bae105d283706d51dd585853d9c96
         name: nginx
         ports:
         - containerPort: 80
