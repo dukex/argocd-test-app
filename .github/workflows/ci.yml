@@ -4,11 +4,15 @@ on:
     branches:
       - development
       - main
+    paths-ignore:
+      - 'k8s/**'
 
 jobs:
   build-and-test:
     name: "Build & Test"
     runs-on: ubuntu-20.04
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v3
       - name: Login to Docker Hub
@@ -20,3 +24,10 @@ jobs:
         run: docker build -t dukex/dummy-nginx:${{ github.sha }} .
       - name: Push
         run: docker push dukex/dummy-nginx:${{github.sha}}
+
+      - name: Patch new image
+        run: |
+          kubectl patch --local -f k8s/deployment.yaml -p '{"spec":{"template":{"spec":{"containers":[{"name":"nginx","image":"dukex/dummy-nginx:${{github.sha}}"}]}}}}' -o yaml > k8s/deployment.yaml.new
+          rm k8s/deployment.yaml
+          mv k8s/deployment.yaml.new k8s/deployment.yaml
+      - uses: stefanzweifel/git-auto-commit-action@v4
